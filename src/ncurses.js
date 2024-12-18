@@ -5,6 +5,7 @@ const COLS = 100;
 const ROWS = 100;
 
 const makeNcurses = () => {
+  /** @type {string[]} */
   const screenBuffer = [];
   screenBuffer.length = ROWS * COLS;
   screenBuffer.fill(" ");
@@ -44,14 +45,24 @@ const makeNcurses = () => {
     process.exit();
   };
 
+  /**
+   * @param {number} x
+   * @param {number} y
+   */
   const move = (x, y) => {
     cursorPos.x = x;
     cursorPos.y = y;
     program.move(x, y);
   };
 
+  /**
+   * @param {object} coordinates
+   * @param {number} coordinates.x
+   * @param {number} coordinates.y
+   */
   const getBufPos = ({ x, y }) => y * program.cols + x;
 
+  /** @param {string} msg */
   const write = (msg) => {
     for (let i = 0; i < msg.length; i++) {
       const letter = msg.charAt(i);
@@ -91,12 +102,16 @@ const makeNcurses = () => {
     program.clear();
   };
 
+  /** @param {string} msg */
   const printw = (msg) => {
     write(msg);
     displayBox.setContent(screenBuffer.join(""));
     screen.render();
   };
-
+  /**
+   * @param {number} x
+   * @param {number} y
+   * @param {string} msg */
   const mvprintw = (x, y, msg) => {
     move(x, y);
     write(msg);
@@ -118,6 +133,7 @@ const makeNcurses = () => {
     initscr,
     clear,
     key,
+    move,
     mvinch,
   };
 };

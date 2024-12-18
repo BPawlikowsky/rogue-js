@@ -1,9 +1,10 @@
 {
   "tasks": {
-    "start": "deno --allow-env --allow-read --allow-write --allow-sys --allow-run --allow-ffi src/rouge.js"
+    "start": "deno --allow-env --allow-read --allow-write --allow-sys --allow-run --allow-ffi src/rogue.ts"
   },
   "compilerOptions": {
-    "jsx": "precompile"
+    "jsx": "precompile",
+    "checkJs": true
   },
   "deploy": {
     "exclude": [".env"],
@@ -13,7 +14,8 @@
   "imports": {
     "@xterm/xterm": "npm:@xterm/xterm@^5.5.0",
     "blessed": "npm:blessed@^0.1.81",
-    "neo-blessed": "npm:neo-blessed@^0.2.0"
+    "neo-blessed": "npm:neo-blessed@^0.2.0",
+    "typescript": "npm:typescript@^5.7.2"
   },
   "nodeModulesDir": "auto"
 }
