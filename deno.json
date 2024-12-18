@@ -1,0 +1,19 @@
+{
+  "tasks": {
+    "start": "deno --allow-env --allow-read --allow-write --allow-sys --allow-run --allow-ffi src/rouge.js"
+  },
+  "compilerOptions": {
+    "jsx": "precompile"
+  },
+  "deploy": {
+    "exclude": [".env"],
+    "include": ["./jsons", "*.ts", "deno.json"],
+    "entrypoint": "./main.ts"
+  },
+  "imports": {
+    "@xterm/xterm": "npm:@xterm/xterm@^5.5.0",
+    "blessed": "npm:blessed@^0.1.81",
+    "neo-blessed": "npm:neo-blessed@^0.2.0"
+  },
+  "nodeModulesDir": "auto"
+}
