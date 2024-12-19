@@ -75,6 +75,11 @@ const makeNcurses = () => {
    * @type {[string, () => void][]}
    */
   const keypresses = [["q", exitProgram]];
+  /**
+   *
+   * @param {[string, ()=>void][]} keypresses
+   * @returns {(ch:string, keyStr: {name:string}) => void}
+   */
   const keyFn = (keypresses) => (ch, keyStr) => {
     keypresses.forEach((args) => {
       const [k, fn] = args;
@@ -119,10 +124,18 @@ const makeNcurses = () => {
     screen.render();
   };
 
+  /**
+   * @param {string} key
+   * @param {()=>void} fn
+   */
   const key = (key, fn) => {
     keypresses.push([key, fn]);
   };
 
+  /**
+   * @param {number} x
+   * @param {number} y
+   */
   const mvinch = (x, y) => {
     return screenBuffer[getBufPos({ x, y })];
   };

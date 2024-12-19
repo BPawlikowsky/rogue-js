@@ -3,8 +3,7 @@
     "start": "deno --allow-env --allow-read --allow-write --allow-sys --allow-run --allow-ffi src/rogue.ts"
   },
   "compilerOptions": {
-    "jsx": "precompile",
-    "checkJs": true
+    "allowUnreachableCode": true
   },
   "deploy": {
     "exclude": [".env"],
@@ -12,9 +11,11 @@
     "entrypoint": "./main.ts"
   },
   "imports": {
+    "@types/node": "npm:@types/node@^22.10.2",
     "@xterm/xterm": "npm:@xterm/xterm@^5.5.0",
     "blessed": "npm:blessed@^0.1.81",
     "neo-blessed": "npm:neo-blessed@^0.2.0",
+    "ts-node": "npm:ts-node@^10.9.2",
     "typescript": "npm:typescript@^5.7.2"
   },
   "nodeModulesDir": "auto"
